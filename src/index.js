@@ -10,3 +10,7 @@ var isPalindrome = function(x) {
 
     return reverse == x; // is 1411 == 1141? ==> false
 };
+Array.prototype.last = function() {
+     return this.length === 0 ? -1 : this[this.length - 1];
+};
+
