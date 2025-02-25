@@ -13,4 +13,20 @@ var isPalindrome = function(x) {
 Array.prototype.last = function() {
      return this.length === 0 ? -1 : this[this.length - 1];
 };
+class Solution {
+  longestCommonPrefix(strs) {
+    if (strs.length === 0) return "";  // Se o array estiver vazio, retorna uma string vazia
 
+    let prefix = strs[0];  // Inicia com o primeiro elemento como prefixo
+
+    for (let i = 1; i < strs.length; i++) {
+      // Enquanto o prefixo não for encontrado no início da string
+      while (strs[i].indexOf(prefix) !== 0) {
+        prefix = prefix.slice(0, prefix.length - 1);  // Diminui o prefixo
+        if (prefix === "") return "";  // Se o prefixo ficar vazio, retorna
+      }
+    }
+
+    return prefix;  // Retorna o prefixo comum
+  }
+}
