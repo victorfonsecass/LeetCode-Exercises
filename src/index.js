@@ -30,3 +30,22 @@ class Solution {
     return prefix;  // Retorna o prefixo comum
   }
 }
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> stk;
+        unordered_map<char, char> match = {{')', '('}, {'}', '{'}, {']', '['}};
+
+        for (char c : s) {
+            if (match.count(c)) {
+                // Se a pilha estiver vazia ou o topo não corresponde ao parêntese de abertura esperado
+                if (stk.empty() || stk.top() != match[c]) return false;
+                stk.pop();
+            } else {
+                stk.push(c);  // Se for um parêntese de abertura, empilhe
+            }
+        }
+
+        return stk.empty();
+    }
+};
