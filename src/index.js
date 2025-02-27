@@ -53,3 +53,10 @@ var createCounter = function(n) {
     };
 };
 
+var createCounter = function(n) {
+ return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(n);  // Resolve a promise após 'millis' milissegundos
+        }, millis);  // 'millis' é o tempo de espera em milissegundos
+    });
+};
