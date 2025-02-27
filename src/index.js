@@ -31,21 +31,25 @@ class Solution {
   }
 }
 class Solution {
-public:
-    bool isValid(string s) {
-        stack<char> stk;
-        unordered_map<char, char> match = {{')', '('}, {'}', '{'}, {']', '['}};
+    isValid(s) {
+        const stk = [];
+        const match = { ')': '(', '}': '{', ']': '[' };
 
-        for (char c : s) {
-            if (match.count(c)) {
-                // Se a pilha estiver vazia ou o topo não corresponde ao parêntese de abertura esperado
-                if (stk.empty() || stk.top() != match[c]) return false;
-                stk.pop();
+        for (let c of s) {
+            if (match[c]) {
+                if (stk.pop() !== match[c]) return false;
             } else {
-                stk.push(c);  // Se for um parêntese de abertura, empilhe
+                stk.push(c);
             }
         }
 
-        return stk.empty();
+        return stk.length === 0;
     }
+}
+var createCounter = function(n) {
+    let count = n;
+    return function() {
+        return count++;
+    };
 };
+
